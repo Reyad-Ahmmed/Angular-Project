@@ -1,0 +1,67 @@
+<div style="display:flex;flex-direction:row;justify-content:space-around">
+  <div>
+    <img *ngIf="mobile" class="update-image" src="/Uploads/{{mobile?.picture}}" />
+  </div>
+  <div style="width:100%">
+    <form class="form-container" [formGroup]="mobileForm" (submit)="update()">
+      <div class="fw">
+        <h3>Edit Existing Mobile</h3>
+      </div>
+      <mat-form-field class="fw">
+        <mat-label>Model</mat-label>
+        <input matInput formControlName="model">
+        <mat-error *ngIf="f.model.touched && f.model.errors?.required">Model field required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="fw">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price">
+        <mat-error *ngIf="f.price.touched && f.price.errors">Price field required</mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="fw">
+        <mat-label>Release Date</mat-label>
+        <input matInput formControlName="releaseDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="f.releaseDate.touched && f.releaseDate.errors">Release date required</mat-error>
+
+      </mat-form-field>
+
+      <div class="row-pic">
+        <mat-form-field appearance="standard" class="fw">
+          <mat-label>Mobile picture</mat-label>
+          <ngx-mat-file-input formControlName="picture" [accept]="'image/*'" (change)="onChange($event)"></ngx-mat-file-input>
+          <mat-icon matSuffix>insert_photo</mat-icon>
+          <mat-error *ngIf="f.picture.touched && f.picture.errors">Picture required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="standard" class="fw">
+        <mat-label>Brand Name</mat-label>
+        <mat-select formControlName="brandId">
+          <mat-option value="">--Select One--</mat-option>
+          <mat-option *ngFor="let b of brands" [value]="b.brandId">
+            {{b.brandName}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.brandId.touched && f.brandId.errors">Brand name required</mat-error>
+      </mat-form-field>
+
+      <div class="fw">
+        <mat-label>Available</mat-label>
+        <mat-checkbox formControlName="available" style="margin-left:15px;">
+        </mat-checkbox>
+
+      </div>
+
+      <div class="fw">
+        <button [disabled]="mobileForm.invalid" mat-raised-button type="submit" class="editBtn"><mat-icon>save_alt</mat-icon> Update</button>
+      </div>
+      <div class="fw">
+        <a mat-flat-button [routerLink]="['/view-mobile']"><mat-icon>arrow_circle_left</mat-icon>Preview Mobile List</a>
+      </div>
+    </form>
+  </div>
+
+
+</div>

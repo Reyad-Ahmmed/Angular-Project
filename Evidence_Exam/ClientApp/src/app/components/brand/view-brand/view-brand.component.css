@@ -1,0 +1,28 @@
+
+/*mat header*/
+
+.header {
+  background-color:rgb(228 216 215);
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+/*create button color*/
+.addBtn {
+  background-color: rgb(87 120 156);
+  color: white;
+}
+.addBtn:hover {
+  background-color: rgb(127 160 195);
+  font-weight: 600
+}
+
+/*edit button color*/
+.editBtn {
+  background-color: rgb(161 155 237);
+}
+.editBtn:hover {
+  background-color: rgb(148 143 217);
+}
+

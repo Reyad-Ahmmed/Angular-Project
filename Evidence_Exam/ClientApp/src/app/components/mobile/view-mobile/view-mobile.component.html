@@ -1,0 +1,62 @@
+<mat-card class="card-container mat-elevation-z8" style="background-color:rgb(235 230 230);">
+  <mat-card-header class="header">
+    <mat-card-title class="card-title">
+      <mat-icon>smartphone</mat-icon> Mobiles
+    </mat-card-title>
+    <mat-card-subtitle class="card-title">
+      Latest Mobile Phone in Bangladesh
+     
+    </mat-card-subtitle>
+    
+    <span class="space"></span>
+    <button mat-mini-fab [routerLink]="['/create-mobile']" class="addBtn"><mat-icon>add</mat-icon></button>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="picture">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <img class="row-image" src="/Uploads/{{element.picture}}" />
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="model">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Model</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.model }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="releaseDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Release Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.releaseDate|date:"mediumDate"}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.price|currency:'BDT':'symbol' }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="available">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Available? </mat-header-cell>
+          <mat-cell *matCellDef="let element" [ngStyle]="{color:element.available==true? 'green':'red'}">{{element.available? "In Stock": "Out of Stock"}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="brand">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getBrandName(element.brandId) }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>...</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="editBtn" mat-mini-fab [routerLink]="['/edit-mobile', element.mobileId]" style="margin-right:10px;"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnList;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons style="display:flex;flex-direction:row;justify-content:space-around"></mat-paginator>
+    </div>
+    <div style="margin:5px 0">
+      Total Mobile: {{mlength()}}
+    </div>
+  </mat-card-content>
+</mat-card>
+

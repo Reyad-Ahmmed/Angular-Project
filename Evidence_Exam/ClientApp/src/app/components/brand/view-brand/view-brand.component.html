@@ -1,0 +1,37 @@
+<mat-card class="card-container mat-elevation-z8" style="background-color:rgb(235 230 230)">
+  <mat-card-header class="header">
+    <mat-card-title class="card-title">
+      <mat-icon>pix</mat-icon> Brands
+    </mat-card-title>
+    <mat-card-subtitle class="card-title">
+      There are some well-known mobile brands.
+    </mat-card-subtitle>
+    <span class="space"></span>
+    <button mat-mini-fab class="addBtn" [routerLink]="['/create']"><mat-icon>add</mat-icon></button>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container" >
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="brandName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Brand Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.brandName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="country">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.country }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>...</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="editBtn" mat-mini-fab [routerLink]="['/edit', element.brandId]" style="margin-right:10px"><mat-icon >edit</mat-icon></button>
+            <button mat-mini-fab color="warn" (click)="confirmDelete(element)"><mat-icon  class="gap">delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnList;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons style="display:flex;flex-direction:row;justify-content:space-around"></mat-paginator>
+    </div>
+  </mat-card-content>
+  
+</mat-card>

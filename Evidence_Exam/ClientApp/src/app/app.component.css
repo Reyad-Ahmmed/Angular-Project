@@ -1,0 +1,17 @@
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  min-height: 250px;
+  padding: 10px 25px;
+  color:white;
+}
+.part{
+    width:24%;
+}
+.content {
+  margin-bottom: 5px;
+  color: rgb(255 216 0);
+}

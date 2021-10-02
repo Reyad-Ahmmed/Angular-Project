@@ -1,0 +1,26 @@
+<div class="form-container">
+  <form #addBrand="ngForm" (ngSubmit)="insert(addBrand)" class="form-container">
+    <h3>Create new Brand</h3>
+    <mat-form-field class="fw">
+      <mat-label>Brand Name</mat-label>
+      <input matInput name="brandName" id="brandName" [(ngModel)]="brand.brandName" required #brandName="ngModel">
+      <mat-error *ngIf="brandName.touched && brandName.invalid">Brand Name required</mat-error>
+
+    </mat-form-field>
+    <mat-form-field class="fw">
+      <mat-label>Country</mat-label>
+      <input matInput name="country" id="country" [(ngModel)]="brand.country" required #country="ngModel">
+      <mat-error *ngIf="country.touched && country.invalid">Country required</mat-error>
+    </mat-form-field>
+
+    <div class="fw">
+      <button [disabled]="addBrand.invalid" mat-raised-button type="submit" color="primary"><mat-icon>save_alt</mat-icon> Save</button>
+    </div>
+
+    <div class="fw">
+      <a mat-flat-button [routerLink]="['/view']">Back to list</a>
+    </div>
+
+  </form>
+</div>
+

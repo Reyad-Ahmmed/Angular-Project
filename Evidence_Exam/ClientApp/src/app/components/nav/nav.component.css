@@ -1,0 +1,38 @@
+
+.sidenav-container {
+  height: 100%;
+}
+.sidenav {
+  width: 260px;
+  background-color:rgb(217 237 254)
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/*gap between icon and link title*/
+.gap{
+    margin-right:20px;
+}
+
+/*link color*/
+.navLink{
+    background-color:rgb(217 237 254);
+}
+.navLink:hover {
+  background-color: black;
+  color: rgb(217 237 254);
+}
+
+/*side nav menu header*/
+.mat-toolbar {
+  background-color: black !important;
+  color: rgb(217 237 254);
+}

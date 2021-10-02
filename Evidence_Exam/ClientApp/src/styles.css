@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Basic&display=swap');
+@font-face {
+  font-family: 'Gentium Basic';
+  src:url(assets/Font/GentiumBasic-Regular.ttf) format('truetype')
+}
+.font-head {
+  font-family: 'Gentium Basic';
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*view for body content*/
+.view {
+  box-sizing: border-box;
+  margin: 10px 25px;
+}
+
+/*table content*/
+.table-container {
+  width: 100%;
+}
+
+/*card content*/
+.card-container {
+  width: 95%;
+  margin: 20px auto;
+}
+
+/*space between card header and add button*/
+.space {
+  flex: 1 1 auto;
+}
+
+/*form container*/
+.form-container{
+    width:95%;
+    margin:50px auto;
+    background-color:rgb(245 239 236);
+    padding:20px;
+}
+
+/*input container*/
+.fw{
+    width:60%;
+    margin:10px;
+}
+
+/*snack bar color*/
+.s-bar-success{
+    background-color:rgb(204 224 146);
+    color:black;
+    font-weight:600;
+}
+.s-bar-fail {
+  background-color: rgb(247 221 203);
+  color: black;
+  font-weight: 600;
+}
